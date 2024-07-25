@@ -140,8 +140,16 @@ void Object::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBOD
   // This should only cover collisions with packages
   orxASSERT(_poCollider != orxNULL);
 
-  // Add to the set of connected objects
-  connectedObjects.insert(_poCollider);
+  if (!connectedObjects.contains(_poCollider))
+  {
+    // Add to the set of connected objects
+    connectedObjects.insert(_poCollider);
+
+    auto position = orxVECTOR_0;
+    _poCollider->GetPosition(position);
+    position.fZ = static_cast<orxFLOAT>(connectedObjects.size()) * -10.0f;
+    _poCollider->SetPosition(position);
+  }
 }
 
 void Object::OnSeparate(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart)
