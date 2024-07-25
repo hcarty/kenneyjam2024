@@ -148,7 +148,7 @@ solution "kenneyjam2024"
     configuration {"linux"}
         buildoptions
         {
-            "-std=c++11",
+            "-std=c++20",
             "-Wno-unused-function"
         }
         linkoptions {"-Wl,-rpath ./", "-Wl,--export-dynamic"}
@@ -170,7 +170,7 @@ solution "kenneyjam2024"
         buildoptions
         {
             "-stdlib=libc++",
-            "-std=c++11",
+            "-std=c++20",
             "-gdwarf-2",
             "-Wno-unused-function",
             "-Wno-write-strings"
